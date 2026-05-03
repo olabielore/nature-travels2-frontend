@@ -4,7 +4,7 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import type { Metadata } from "next";
-import { fetchNotes } from "@/lib/api/serverApi";
+import { fetchNotes } from "@/services/api/serverApi";
 import NotesClient from "./Notes.client";
 
 interface FilteredPageProps {

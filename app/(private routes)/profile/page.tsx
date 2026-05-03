@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { getMe } from '@/lib/api/serverApi';
+import { getMe } from '@/services/api/serverApi';
 import type { Metadata } from 'next';
 import css from "./ProfilePage.module.css"
 

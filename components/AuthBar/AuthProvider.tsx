@@ -1,8 +1,8 @@
 
 'use client';
 
-import { checkSession } from '@/lib/api/clientApi';
-import { useAuthStore } from '@/lib/store/authStore';
+import { checkSession } from '@/services/api/clientApi';
+import { useAuthStore } from '@/services/store/authStore';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 

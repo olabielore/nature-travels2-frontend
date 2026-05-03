@@ -3,8 +3,8 @@
 import css from "@/app/(auth routes)/SignInPage.module.css";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { login, AuthRequest } from '@/lib/api/clientApi';
-import { useAuthStore } from '@/lib/store/authStore';
+import { login, AuthRequest } from '@/services/api/clientApi';
+import { useAuthStore } from '@/services/store/authStore';
 import axios, { AxiosError } from 'axios';
 
 

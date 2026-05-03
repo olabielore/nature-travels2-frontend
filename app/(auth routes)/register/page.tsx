@@ -3,8 +3,8 @@
 import css from "@/app/(auth routes)/SignUpPage.module.css"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { register, AuthRequest } from '@/lib/api/clientApi';
-import { useAuthStore } from '@/lib/store/authStore';
+import { register, AuthRequest } from '@/services/api/clientApi';
+import { useAuthStore } from '@/services/store/authStore';
 import axios, { AxiosError } from 'axios';
 
 const SignUp = () => {

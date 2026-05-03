@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
-import { Roboto } from 'next/font/google';
-import AuthProvider from '@/components/AuthProvider/AuthProvider';
+import { Montserrat } from 'next/font/google';
+import AuthProvider from '@/components/AuthBar/AuthProvider';
 
 import "./globals.css";
 
@@ -9,20 +9,20 @@ import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-const roboto = Roboto({
-  subsets: ['latin'], 
+const montserrat = Montserrat({
+  subsets: ['latin', 'cyrillic'], 
   weight: ['400', '700'],
-  variable: '--font-roboto', 
+  variable: '--font-family', 
   display: 'swap', 
 });
 
 export const metadata: Metadata = {
-  title: 'NoteHub',
-  description: 'A simple and efficient note-taking application',
+  title: 'Природні Мандри',
+  description: 'Платформа для екологічних мандрів Україною: відкривайте нові місця, діліться історіями та знаходьте однодумців.',
   openGraph: {
-    title: "NoteHub",
-    description: 'A simple and efficient note-taking application',
-    url: "https://notehub.com",
+    title: 'Природні Мандри',
+    description: 'Платформа для екологічних мандрів Україною: відкривайте нові місця, діліться історіями та знаходьте однодумців.',
+    url: "https://nature-travels2-backend.onrender.com",
     images: [
       {
         url: 'https://ac.goit.global/fullstack/react/notehub-og-meta.jpg',
@@ -43,7 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.variable}>
+      <body className={montserrat.variable}>
         <TanStackProvider>
           <AuthProvider>
             <Header />

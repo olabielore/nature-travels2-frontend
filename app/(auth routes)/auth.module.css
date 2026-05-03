@@ -1,0 +1,13 @@
+.authLayout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.authHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0px; 
+}
