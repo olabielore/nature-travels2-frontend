@@ -1,26 +1,44 @@
-"use client";
+'use client';
 
 import css from './Header.module.css';
 import Link from 'next/link';
-import AuthNavigation from '@/components/AuthNavigation/AuthNavigation';
-
+import { useAuthStore } from '@/services/store/authStore';
+import { useState } from 'react';
+import AuthBar from '@/components/AuthBar/AuthBar';
+import UserBar from '@/components/UserBar/UserBar';
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import HeaderNav from '../FooterNav/FooterNav';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  
   return (
   
     <header className={css.header}>
-      <Link href='/' aria-label='Home'>NoteHub</Link>
-      <nav aria-label="Main Navigation">
-        <ul className={css.navigation}>
-          <li>
-            <Link href='/'>Home</Link>
-          </li>
-          <li>
-            <Link href='/notes/filter/all'>Notes</Link>
-          </li>
-          <AuthNavigation />
-        </ul>
-      </nav>
+      <Link href="/">
+          <svg width="124" height="36">
+            <use href="/sprite.svg#icon-logo" />
+          </svg>
+      </Link>
+        
+      <HeaderNav />
+
+        {isAuthenticated ? (
+        <UserBar />
+      ) : (
+        <AuthBar />
+      )}
+
+      <button onClick={() => setIsOpen(true)}>
+        <svg width="32" height="32">
+          <use href="/sprite.svg#icon-burger"></use>
+        </svg>
+      </button>
+      
+      {isOpen && (
+        <BurgerMenu onClose={() => setIsOpen(false)} />
+      )}
     </header>
   )
 };

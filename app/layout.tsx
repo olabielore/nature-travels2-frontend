@@ -1,7 +1,7 @@
 
 import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
-import AuthProvider from '@/components/AuthBar/AuthProvider';
+import AuthProvider from '@/components/AuthProvider/AuthProvider';
 
 import "./globals.css";
 
@@ -42,7 +42,7 @@ export default function RootLayout({
     modal: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <body className={montserrat.variable}>
         <TanStackProvider>
           <AuthProvider>

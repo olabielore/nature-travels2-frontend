@@ -4,8 +4,8 @@ import { cookies } from 'next/headers';
 import { parse } from 'cookie';
 import { checkSession } from '@/services/api/serverApi';
 
-const privateRoutes = ['/profile', '/notes'];
-const authRoutes = ['/sign-in', '/sign-up'];
+const privateRoutes = ['/profile', '/stories/new'];
+const authRoutes = ['/login', '/register'];
 
 export async function proxy(request: NextRequest) {
   const cookieStore = await cookies();
@@ -55,7 +55,7 @@ export async function proxy(request: NextRequest) {
     }
 
     if (isAuth) return NextResponse.next();
-    if (isPrivate) return NextResponse.redirect(new URL('/sign-in', request.url));
+    if (isPrivate) return NextResponse.redirect(new URL('/login', request.url));
   }
 
   if (accessToken) {
@@ -67,5 +67,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/profile/:path*', '/notes/:path*', '/sign-in', '/sign-up'],
+  matcher: ['/profile/:path*', '/stories/new', '/login', '/register'],
 };
