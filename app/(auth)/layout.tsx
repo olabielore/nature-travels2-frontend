@@ -4,7 +4,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import css from "@/app/(auth routes)/auth.module.css"
+import css from "./auth.module.css"
 
 type Props = {
   children: React.ReactNode;

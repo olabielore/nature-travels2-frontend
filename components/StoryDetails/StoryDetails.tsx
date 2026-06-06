@@ -7,7 +7,6 @@ import { getStoryById } from "@/services/api/clientApi";
 import Image from "next/image";
 import Link from "next/link";
 import SaveStory from '@/components/SaveStory/SaveStory';
-import RecommendedStories from '@/components/story/RecommendedStories/RecommendedStories';
 import Loader from '@/components/Loader/Loader';
 import css from "./StoryDetails.module.css"
 
@@ -47,7 +46,7 @@ const StoryDetails = () => {
         <p className={css.content}>{story.article}</p>
         <SaveStory/>
       </div>
-      <RecommendedStories/>
+      {/* <RecommendedStories/> */}
     </div>
 
   );

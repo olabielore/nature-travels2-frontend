@@ -2,7 +2,7 @@
 
 import React from "react";
 import SidebarNotes from "@/app/(main)/stories/filter/@sidebar/SidebarNotes/SidebarNotes";
-import css from "./LayoutNotes.module.css";
+import css from "./StoriesPage.module.css";
 
 interface LayoutNotesProps {
   children: React.ReactNode;
