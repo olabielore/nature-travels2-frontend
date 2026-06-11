@@ -7,7 +7,12 @@ import Button from '@/components/Button/Button';
 import type { Story } from '@/types/story';
 import toast from 'react-hot-toast';
 
-const Pagination = () => {
+interface Props {
+  category?: string;
+}
+
+const Pagination = ({ category }: Props) => {
+
   const [stories, setStories] = useState<Story[]>([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -17,23 +22,29 @@ const Pagination = () => {
     setLoading(true);
 
     try {
-      const res = await getStories({ page });
+      const res = await getStories({ page, category });
 
       setStories((prev) => [...prev, ...res.stories]);
 
       setHasMore(page < res.totalPages);
-    } catch (error) {
+    } catch {
       toast.error('Помилка завантаження історій');
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, [page, category]);
 
   useEffect(() => {
     if (!hasMore) return;
 
     loadStories();
   }, [page, hasMore, loadStories]);
+
+  useEffect(() => {
+    setPage(1);
+    setStories([]);
+    setHasMore(true);
+  }, [category]);
 
   return (
     <>

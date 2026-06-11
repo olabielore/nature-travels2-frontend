@@ -8,7 +8,7 @@ import type { FetchNotesResponse } from "@/services/api/clientApi";
 import Link from "next/link";
 
 import Pagination from "@/components/Pagination/Pagination";
-import NoteList from "@/components/NoteList/NoteList";
+import NoteList from "@/components/StoriesList/StoriesList";
 import SearchBox from "@/components/SearchBox/SearchBox";
 
 import css from "./NotesPage.module.css";

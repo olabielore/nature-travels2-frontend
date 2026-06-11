@@ -1,7 +1,7 @@
 
 'use client';
 
-import { checkSession } from '@/services/api/clientApi';
+import { refreshSession } from '@/services/api/clientApi';
 import { useAuthStore } from '@/services/store/authStore';
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -24,7 +24,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const user = await checkSession();
+        const user = await refreshSession();
         
         if (user) {
           setUser(user);
