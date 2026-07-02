@@ -16,7 +16,7 @@ const StoryCard = ({story} : Props) => {
       <Image alt={story.title} src={story.img} width={340} height={340} />
       <div className={css.content}>
         <div className={css.titleWrapper}>
-          <p>{story.ownerId}</p>
+          <p>{story.ownerId.name}</p>
           <span className={css.point}></span>
           <svg width="16" height="16" className={css.icon}>
             <use href="/sprite.svg#icon-bookmark" />

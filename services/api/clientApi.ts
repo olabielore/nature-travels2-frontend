@@ -74,9 +74,15 @@ export const getStoryById = async (id: string): Promise<Story> => {
   return data;
 };
 
-export const createStory = async (
-  story: Pick<Story, 'title' | 'article' | 'category'>
-): Promise<Story> => {
+export type CreateStoryRequest = {
+  title: string;
+  article: string;
+  category: string; // ← ObjectId як string
+  img: string;
+  date: string;
+};
+
+export const createStory = async (story: CreateStoryRequest): Promise<Story> => {
   const { data } = await api.post<Story>('/stories', story);
   return data;
 };

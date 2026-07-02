@@ -1,18 +1,16 @@
 
-
 'use client';
 
 type Props = {
-    error: Error;
+  error: Error;
+  reset: () => void; 
 };
 
-const Error = ({ error}: Props) => {
+export default function GlobalError({ error, reset }: Props) {
   return (
     <div>
-      <p>Could not fetch the list of notes. {error.message}</p>
+      <p>Щось пішло не так. {error.message}</p>
+      <button onClick={reset}>Спробувати знову</button>
     </div>
   );
 }
-
-export default Error;
-

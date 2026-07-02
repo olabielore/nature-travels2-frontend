@@ -1,16 +1,47 @@
+import ErrorWhileSavingModal from '@/components/ErrorWhileSavingModal/ErrorWhileSavingModal';
 import css from "./SaveStory.module.css"
-import Image from "next/image";
+import { useAuthStore } from '@/services/store/authStore';
+import { toggleSaveStory } from '@/services/api/clientApi';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
-export default function CreateNewStory() {
+interface SaveStoryProps {
+  storyId: string;
+}
+
+export default function SaveStory({ storyId }: SaveStoryProps) {
+  const [saved, setSaved] = useState(false);
+  const [loading, setLaoding] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+
+  const handleSave = async () => {
+    if (!isAuthenticated) {
+      setIsModalOpen(true);
+      return;
+    }
+    setLaoding(true);
+    try {
+      const res = await toggleSaveStory(storyId);
+      setSaved(res.saved);
+    } catch {
+      toast.error('Помилка збереження');
+    } finally {
+      setLaoding(false);
+    }
+  }
 
   return (
-    <main className={css.main}>
-        <div className={css.container}>
-            <p>Обкладинка статті</p>
-            <h1 className={css.title}>Створити нову історію</h1>
-            <Image alt="Обкладинка статті" src={preview ?? '/placeholder.jpg'} width={1091} height={726} />
-            <button>Завантажити фото</button>
-      </div>
-    </main>
-  )
-};
+    <div className={css.container}>
+      <h2>Збережіть собі історію</h2>
+      <p>Вона буде доступна у вашому профілі у розділі збережене</p>
+      <button onClick={handleSave} disabled={loading}>
+        {saved ? 'Видалити зі збережених' : 'Зберегти'}
+      </button>
+
+      {isModalOpen && (
+        <ErrorWhileSavingModal onClose={() => setIsModalOpen(false)} />
+      )}
+    </div>
+  );
+}

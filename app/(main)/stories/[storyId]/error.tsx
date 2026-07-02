@@ -8,7 +8,7 @@ type Props = {
 const Error = ({ error}: Props) => {
   return (
     <div>
-      <p>Could not fetch note details. {error.message}</p>
+      <p>Could not fetch details. {error.message}</p>
     </div>
   );
 }
