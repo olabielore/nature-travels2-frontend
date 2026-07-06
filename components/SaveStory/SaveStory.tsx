@@ -3,6 +3,7 @@ import css from "./SaveStory.module.css"
 import { useAuthStore } from '@/services/store/authStore';
 import { toggleSaveStory } from '@/services/api/clientApi';
 import { useState } from 'react';
+import Button from '@/components/Button/Button';
 import toast from 'react-hot-toast';
 
 interface SaveStoryProps {
@@ -35,9 +36,9 @@ export default function SaveStory({ storyId }: SaveStoryProps) {
     <div className={css.container}>
       <h2>Збережіть собі історію</h2>
       <p>Вона буде доступна у вашому профілі у розділі збережене</p>
-      <button onClick={handleSave} disabled={loading}>
+      <Button onClick={handleSave} disabled={loading}>
         {saved ? 'Видалити зі збережених' : 'Зберегти'}
-      </button>
+      </Button>
 
       {isModalOpen && (
         <ErrorWhileSavingModal onClose={() => setIsModalOpen(false)} />

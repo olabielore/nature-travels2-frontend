@@ -4,6 +4,7 @@ import css from "@/components/RegistrationForm/RegistrationForm.module.css"
 import { useRouter } from 'next/navigation';
 import { register } from '@/services/api/clientApi';
 import { useAuthStore } from '@/services/store/authStore';
+import Button from '@/components/Button/Button';
 import axios from 'axios';
 
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
@@ -109,13 +110,13 @@ const RegistrationForm = () => {
                 </div>
     
                 <div className={css.actions}>
-                  <button
+                  <Button
                     type="submit"
                     className={css.submitButton}
                     disabled={isSubmitting}
                   >
                     Зареєструватись
-                  </button>
+                  </Button>
                 </div>
     
               </Form>

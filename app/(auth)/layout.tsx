@@ -1,22 +1,11 @@
-
-'use client';
-
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import css from "./auth.module.css"
+import css from './auth.module.css';
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function AuthLayout({ children }: Props) {
-  const router = useRouter();
-  
-  useEffect(() => {
-    router.refresh();
-  }, [router]);
-
   return (
     <div className={css.authLayout}>
       <header className={css.authHeader}>
@@ -26,7 +15,6 @@ export default function AuthLayout({ children }: Props) {
           </svg>
         </Link>
       </header>
-
       <main>{children}</main>
     </div>
   );

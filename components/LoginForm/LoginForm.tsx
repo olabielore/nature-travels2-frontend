@@ -4,6 +4,7 @@ import css from '@/components/LoginForm/LoginForm.module.css';
 import { useRouter } from 'next/navigation';
 import { login, AuthRequest } from '@/services/api/clientApi';
 import { useAuthStore } from '@/services/store/authStore';
+import Button from '@/components/Button/Button';
 import axios from 'axios';
 
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
@@ -87,13 +88,13 @@ const LoginForm = () => {
             </div>
 
             <div className={css.actions}>
-              <button
+              <Button
                 type="submit"
                 className={css.submitButton}
                 disabled={isSubmitting}
               >
                 Увійти
-              </button>
+              </Button>
             </div>
 
           </Form>

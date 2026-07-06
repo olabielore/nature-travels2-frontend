@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Button from '@/components/Button/Button';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/navigation';
@@ -122,15 +123,15 @@ export default function AddStoryForm() {
           </div>
 
           <div className={css.actions}>
-            <button type="submit" disabled={isSubmitting}>
+            <Button type="submit" disabled={isSubmitting}>
               Зберегти
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               onClick={() => { resetForm(); setPreview(null); }}
             >
               Відмінити
-            </button>
+            </Button>
           </div>
         </Form>
       )}
