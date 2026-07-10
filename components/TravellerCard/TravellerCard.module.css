@@ -1,0 +1,65 @@
+/* TravellerCard.module.css */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #f5f0eb;
+    list-style: none;
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.titleWrapper h3 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.titleWrapper p {
+    font-size: 14px;
+    color: #666;
+}
+
+.buttonWrapper {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.buttonMore {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    color: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.buttonMore:hover {
+    background-color: #e8e3de; }

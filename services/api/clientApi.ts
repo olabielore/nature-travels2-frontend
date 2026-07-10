@@ -47,11 +47,12 @@ return data;
 };
 
 export type StoriesParams = {
-page?: number;
-perPage?: number;
-search?: string;
-category?: string;
-rate?: number;
+  page?: number;
+  perPage?: number;
+  search?: string;
+  category?: string;
+  rate?: number;
+  ownerId?: string;
 }
   
 export type StoriesResponse = {
@@ -74,10 +75,15 @@ export const getStoryById = async (id: string): Promise<Story> => {
   return data;
 };
 
+export const getUserById = async (id: string): Promise<User> => {
+  const { data } = await api.get<User>(`/users/${id}`);
+  return data;
+}
+
 export type CreateStoryRequest = {
   title: string;
   article: string;
-  category: string; // ← ObjectId як string
+  category: string;
   img: string;
   date: string;
 };
@@ -120,5 +126,25 @@ export const getRecommendedStories = async (category: string, storyId: string): 
 
 export const getPopularStories = async (): Promise<{ stories: Story[] }> => {
   const { data } = await api.get('/stories/popular');
+  return data;
+};
+
+export type TravellersParams = {
+  page?: number;
+  perPage?: number;
+};
+
+export type TravellersResponse = {
+  users: User[];
+  totalPages: number;
+  totalItems: number;
+  page: number;
+  perPage: number;
+};
+
+export const getTravellers = async (
+  params?: TravellersParams
+): Promise<TravellersResponse> => {
+  const { data } = await api.get('/users', { params });
   return data;
 };

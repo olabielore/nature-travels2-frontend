@@ -1,5 +1,9 @@
 export type User = {
-    email: string;
-    name: string;
-    avatarUrl: string;
-  };
+  _id: string;
+  email: string;
+  name: string;
+  avatarUrl: string;
+  savedStories: string[];
+  storiesAmount: number;
+  emailVerified: boolean;
+};

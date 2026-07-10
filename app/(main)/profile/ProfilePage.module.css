@@ -1,33 +1,14 @@
-.mainContent {
-    flex: 1;
+/* ProfilePage.module.css */
+
+.page {
+    padding: 24px 16px;
+}
+
+.userInfo {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 32px;
-}
-
-.profileCard {
-    max-width: 500px;
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    padding: 24px;
-    text-align: left;
-}
-
-.formTitle {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 24px;
-    text-align: left;
-}
-
-.avatarWrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .avatar {
@@ -35,40 +16,33 @@
     object-fit: cover;
 }
 
-.profileInfo {
-    font-size: 18px;
-    color: #333;
+.userDetails {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
+    gap: 4px;
 }
 
-.usernameWrapper {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.userName {
+    font-size: 20px;
+    font-weight: 700;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+.storiesCount {
+    font-size: 14px;
+    color: #666;
 }
 
-.editProfileButton {
-    padding: 8px 16px;
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #0d6efd;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+@media (min-width: 768px) {
+    .page {
+        padding: 40px 32px;
+    }
+
+    .userName {
+        font-size: 24px;
+    }
 }
 
-.editProfileButton:hover {
-    background-color: #0b5ed7; }
+@media (min-width: 1440px) {
+    .page {
+        padding: 60px 64px;
+    } }
