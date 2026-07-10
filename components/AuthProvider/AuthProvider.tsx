@@ -25,24 +25,18 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     const checkAuth = async () => {
       try {
         const user = await refreshSession();
-        
-        if (user) {
-          setUser(user);
-        } else {
-          clearIsAuthenticated();
-      
-          const isPrivate = privateRoutes.some((r) =>
-            pathname.startsWith(r)
-          );
-          if (isPrivate) {
-            router.replace('/login');
-          }
-        };
+        setUser(user);
+      } catch {
+        clearIsAuthenticated();
+        const isPrivate = privateRoutes.some((r) => pathname.startsWith(r));
+        if (isPrivate) {
+          router.replace('/login');
+        }
       } finally {
         setLoading(false);
       }
     };
-
+  
     checkAuth();
   }, [pathname, router, setUser, clearIsAuthenticated]);
       

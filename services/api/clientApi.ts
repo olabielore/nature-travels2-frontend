@@ -32,8 +32,9 @@ export const logout = async (): Promise<void> => {
 await api.post('/auth/logout');
 };
 
-export const refreshSession = async (): Promise<void> => {
-  await api.post('/auth/refresh');
+export const refreshSession = async (): Promise<User> => {
+  const { data } = await api.post<User>('/auth/refresh');
+  return data;
 };
 
 export const getMe = async (): Promise<User> => {

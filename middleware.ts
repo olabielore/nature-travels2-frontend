@@ -7,7 +7,7 @@ import { checkSession } from '@/services/api/serverApi';
 const privateRoutes = ['/profile', '/stories/new'];
 const authRoutes = ['/login', '/register'];
 
-export async function proxy(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
   const refreshToken = cookieStore.get('refreshToken')?.value;
@@ -16,10 +16,9 @@ export async function proxy(request: NextRequest) {
 
   const isPrivate = privateRoutes.some((route) => pathname.startsWith(route));
   const isAuth = authRoutes.some((route) => pathname.startsWith(route));
- 
+
   if (!accessToken) {
     if (refreshToken) {
-      
       const data = await checkSession();
       const setCookieHeader = data.headers['set-cookie'];
 
@@ -28,29 +27,15 @@ export async function proxy(request: NextRequest) {
 
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
-
           for (const [name, value] of Object.entries(parsed)) {
-
             if (value) {
               cookieStore.set(name, value, { path: '/' });
             }
           }
         }
 
-        if (isAuth) {
-          return NextResponse.redirect(new URL('/', request.url), {
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
-        }
-        if (isPrivate) {
-          return NextResponse.next({
-            headers: {
-              Cookie: cookieStore.toString(),
-            },
-          });
-        }
+        if (isAuth) return NextResponse.redirect(new URL('/', request.url));
+        if (isPrivate) return NextResponse.next();
       }
     }
 
